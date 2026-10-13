@@ -29,7 +29,7 @@ constexpr int kMaxActions = 128;
 struct Config {
     bool  log           = false;
     bool  hideReal      = true;   // hide real gamepads from the game while we are active
-    bool  alwaysExpose  = true;  // expose the virtual pad even with no controller attached
+    bool  alwaysExpose  = true;   // expose the virtual pad even with no controller attached
     bool  rumble        = true;   // emulate DirectInput force feedback via SDL rumble
     float rumbleStrength = 1.0f;  // overall rumble scale, 0..2
     int   padIndex      = 0;      // which connected SDL controller to use
@@ -44,15 +44,16 @@ struct Config {
     // Preset: "" or "none" = use the strings below as-is; "xbox" / "ps2" = overwrite them with
     // that built-in layout. (Leave empty if you want the strings below to be the defaults.)
     std::string Preset = "";
-    std::string X = "LeftY";
-    std::string Y = "LeftX";
-    std::string Z = "RightX";
-    std::string Rx = "RightY";
-    std::string Ry = "None";
+    // Axes
+    std::string X = "LeftX";
+    std::string Y = "LeftY";
+    std::string Z = "None";
+    std::string Rx = "RightX";
+    std::string Ry = "RightY";
     std::string Rz = "None";
     std::string Slider0 = "None";
     std::string Slider1 = "None";
-
+    // Buttons
     std::string Button0 = "A";
     std::string Button1 = "B";
     std::string Button2 = "X";
@@ -66,12 +67,27 @@ struct Config {
     std::string Button10 = "LeftStick";
     std::string Button11 = "RightStick";
     std::string Button12 = "Guide";
+    // Actions
+    std::string Action0 = "Axis1";
+    std::string Action1 = "Axis0";
+    std::string Action2 = "Axis3";
+    std::string Action3 = "Axis4";
+    std::string Action4 = "Button0";
+    std::string Action5 = "Button1";
+    std::string Action6 = "Button2";
+    std::string Action7 = "Button3";
+    std::string Action8 = "Button4";
+    std::string Action9 = "Button5";
+    std::string Action10 = "Button6";
+    std::string Action11 = "Button7";
+    std::string Action12 = "Button8";
+    std::string Action13 = "Button9";
     std::string Action14 = "None";
     std::string Action15 = "None";
     std::string Action16 = "Button11";
     std::string Action17 = "None";
     std::string Action18 = "None";
-
+    std::string Action69 = "Hat";
 };
 
 struct PadState {

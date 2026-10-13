@@ -101,10 +101,13 @@ static void ApplyStrings(Config& c) {
     for (int i = 0; i < 13; ++i)
         c.buttonMap[i] = Lookup(*btn[i], kButtonNames, SRC_NONE);
 
-    const std::string* act[5] = { &c.Action14, &c.Action15, &c.Action16, &c.Action17, &c.Action18 };
-    for (int i = 0; i < 5; ++i) {
+    const std::string* act[20] = { &c.Action0, &c.Action1, &c.Action2, &c.Action3, &c.Action4,
+                                   &c.Action5, &c.Action6, &c.Action7, &c.Action8, &c.Action9,
+                                   &c.Action10, &c.Action11, &c.Action12, &c.Action13, &c.Action14,
+                                   &c.Action15, &c.Action16, &c.Action17, &c.Action18, &c.Action69 };
+    for (int i = 0; i < 20; ++i) {
         const std::wstring w(act[i]->begin(), act[i]->end());
-        ParseAction(w.c_str(), c.actionKind[14 + i], c.actionIdx[14 + i]);
+        ParseAction(w.c_str(), c.actionKind[0 + i], c.actionIdx[0 + i]);
     }
 }
 
