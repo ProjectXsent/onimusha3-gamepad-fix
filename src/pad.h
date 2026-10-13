@@ -44,50 +44,57 @@ struct Config {
     // Preset: "" or "none" = use the strings below as-is; "xbox" / "ps2" = overwrite them with
     // that built-in layout. (Leave empty if you want the strings below to be the defaults.)
     std::string Preset = "";
-    // Axes
-    std::string X = "LeftX";
-    std::string Y = "LeftY";
-    std::string Z = "None";
-    std::string Rx = "RightX";
-    std::string Ry = "RightY";
-    std::string Rz = "None";
-    std::string Slider0 = "None";
-    std::string Slider1 = "None";
-    // Buttons
-    std::string Button0 = "A";
-    std::string Button1 = "B";
-    std::string Button2 = "X";
-    std::string Button3 = "Y";
-    std::string Button4 = "LB";
-    std::string Button5 = "RB";
-    std::string Button6 = "LT";
-    std::string Button7 = "RT";
-    std::string Button8 = "Back";
-    std::string Button9 = "Start";
-    std::string Button10 = "LeftStick";
-    std::string Button11 = "RightStick";
-    std::string Button12 = "Guide";
-    // Actions
-    std::string Action0 = "Axis1";
-    std::string Action1 = "Axis0";
-    std::string Action2 = "Axis3";
-    std::string Action3 = "Axis4";
-    std::string Action4 = "Button0";
-    std::string Action5 = "Button1";
-    std::string Action6 = "Button2";
-    std::string Action7 = "Button3";
-    std::string Action8 = "Button4";
-    std::string Action9 = "Button5";
-    std::string Action10 = "Button6";
-    std::string Action11 = "Button7";
-    std::string Action12 = "Button8";
-    std::string Action13 = "Button9";
-    std::string Action14 = "None";
-    std::string Action15 = "None";
-    std::string Action16 = "Button11";
-    std::string Action17 = "None";
-    std::string Action18 = "None";
-    std::string Action69 = "Hat";
+    std::string Axis[8];                 // index = X,Y,Z,Rx,Ry,Rz,Slider0,Slider1; "" or "None" = held at center
+    std::string Button[32];              // "" or "None" = unmapped; otherwise a name from kButtonNames
+    std::string Action[kMaxActions];     // "" = ACT_DEFAULT; otherwise None / Hat / ButtonN / AxisN
+    Config() {
+        // Axes
+        Axis[0] = "LeftX";    // X
+        Axis[1] = "LeftY";    // Y
+        Axis[2] = "None";     // Z
+        Axis[3] = "RightX";   // Rx
+        Axis[4] = "RightY";   // Ry
+        Axis[5] = "None";     // Rz
+        Axis[6] = "None";     // Slider0
+        Axis[7] = "None";     // Slider1
+
+        // Buttons
+        Button[0]  = "A";
+        Button[1]  = "B";
+        Button[2]  = "X";
+        Button[3]  = "Y";
+        Button[4]  = "LB";
+        Button[5]  = "RB";
+        Button[6]  = "LT";
+        Button[7]  = "RT";
+        Button[8]  = "Back";
+        Button[9]  = "Start";
+        Button[10] = "LeftStick";
+        Button[11] = "RightStick";
+        Button[12] = "Guide";
+
+        // Actions
+        Action[0]  = "Axis1";    // Forward / Backward Movement
+        Action[1]  = "Axis0";    // Left / Right Movement
+        Action[2]  = "Axis3";    // Draw weapon X
+        Action[3]  = "Axis4";    // Draw weapon Y
+        Action[4]  = "Button0";  // Examine / Confirm
+        Action[5]  = "Button1";  // Absorb Souls / Cancel
+        Action[6]  = "Button2";  // Attack
+        Action[7]  = "Button3";  // Special Attack
+        Action[8]  = "Button4";  // Block
+        Action[9]  = "Button5";  // Ready Stance
+        Action[10] = "Button6";  // Show current location (hold)
+        Action[11] = "Button7";  // 180 degree quick turn
+        Action[12] = "Button8";  // Pause
+        Action[13] = "Button9";  // Inventory Screen
+        Action[14] = "None";     // Run
+        Action[15] = "None";     // Back step
+        Action[16] = "Button11"; // Onimusha Mode
+        Action[17] = "None";     // Left Rotation
+        Action[18] = "None";     // Right Rotation
+        Action[69] = "Hat";      // Direction Keys
+    }
 };
 
 struct PadState {
