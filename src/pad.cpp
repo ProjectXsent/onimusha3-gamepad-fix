@@ -90,24 +90,18 @@ static void ApplyStrings(Config& c) {
     for (int& b : c.buttonMap) b = SRC_NONE;
     for (int& a : c.axisMap) a = AX_NONE;
 
-    const std::string* axes[8] = { &c.X, &c.Y, &c.Z, &c.Rx,
-                                  &c.Ry, &c.Rz, &c.Slider0, &c.Slider1 };
+    // Axes
     for (int i = 0; i < 8; ++i)
-        c.axisMap[i] = Lookup(*axes[i], kAxisNames, AX_NONE);
+        c.axisMap[i] = Lookup(c.Axis[i], kAxisNames, AX_NONE);
 
-    const std::string* btn[13] = { &c.Button0, &c.Button1, &c.Button2,  &c.Button3,
-                                  &c.Button4, &c.Button5, &c.Button6,  &c.Button7,
-                                  &c.Button8, &c.Button9, &c.Button10, &c.Button11, &c.Button12 };
-    for (int i = 0; i < 13; ++i)
-        c.buttonMap[i] = Lookup(*btn[i], kButtonNames, SRC_NONE);
+    // Buttons
+    for (int i = 0; i < 32; ++i)
+        c.buttonMap[i] = Lookup(c.Button[i], kButtonNames, SRC_NONE);
 
-    const std::string* act[20] = { &c.Action0, &c.Action1, &c.Action2, &c.Action3, &c.Action4,
-                                   &c.Action5, &c.Action6, &c.Action7, &c.Action8, &c.Action9,
-                                   &c.Action10, &c.Action11, &c.Action12, &c.Action13, &c.Action14,
-                                   &c.Action15, &c.Action16, &c.Action17, &c.Action18, &c.Action69 };
-    for (int i = 0; i < 20; ++i) {
-        const std::wstring w(act[i]->begin(), act[i]->end());
-        ParseAction(w.c_str(), c.actionKind[0 + i], c.actionIdx[0 + i]);
+    // Actions
+    for (int i = 0; i < kMaxActions; ++i) {
+        const std::wstring w(c.Action[i].begin(), c.Action[i].end());
+        ParseAction(w.c_str(), c.actionKind[i], c.actionIdx[i]);
     }
 }
 
