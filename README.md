@@ -23,5 +23,5 @@ Deleting `dinput8.dll` will disable/uninstall this fix.
 
 ## Mapping
 
-This is already configured so there's no need to edit the buttons in `DMC3Input.ini`
+This is already configured so there's no need to edit the buttons in `Oni3Input.ini`
 Extra SDL mappings can go in `gamecontrollerdb.txt` next to the DLL.
